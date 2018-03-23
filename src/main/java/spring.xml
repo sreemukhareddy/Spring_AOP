@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">       
+<context:annotation-config/>
+<context:component-scan base-package="com.javabrains.sree"/>    
+           
+<bean id="helloWorld" class="com.firstapp.HelloWorld"></bean>
+
+ <bean id="triangle"   class="com.javabrains.sree.Triangle">
+<property name="pointA" ref="pointAA"></property>	
+<property name="pointB" ref="pointBB"></property>	
+<property name="pointC" ref="pointCC"></property>	
+</bean> 
+
+<bean id="pointAA"   class="com.javabrains.sree.Point">
+<!-- <qualifier value="circleRelated"></qualifier> -->
+<property name="x" value="0"></property>
+<property name="y" value="0"></property>
+</bean>
+
+<bean id="pointBB"   class="com.javabrains.sree.Point">
+<property name="x" value="10"></property>
+<property name="y" value="10"></property>
+</bean>
+
+<bean id="pointCC"   class="com.javabrains.sree.Point">
+<property name="x" value="20"></property>
+<property name="y" value="20"></property>
+</bean>
+
+
+
+<!-- <bean id="circle" class="com.javabrains.sree.Circle">
+
+</bean> -->
+
+<!-- 
+<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"></bean>
+<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"></bean> -->
+
+
+</beans>

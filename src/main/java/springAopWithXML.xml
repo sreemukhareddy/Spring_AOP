@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">       
+
+<!-- Enable @AspectJ annotation support  -->
+    <aop:aspectj-autoproxy />
+
+
+
+<bean name="triangle" class="com.model.Triangle">
+<property name="name" value="triangle name"></property>
+</bean>
+
+<bean name="circle" class="com.model.Circle">
+<!-- <property name="name" value="circle name"></property>  -->
+</bean>
+
+<bean name="shapeService" class="com.service.ShapeService" autowire="byName"></bean>
+
+<bean name="loggingAspectWithXml" class="com.springAOPwithXML.LoggingAspectWithXml"/>
+
+<aop:config>
+
+	<aop:aspect id="loggingAspectWithXml" ref="loggingAspectWithXml">
+	
+	<!-- for all the methods inside the circle class which start with either set OR get  -->
+	
+	<!-- <aop:before method="before" pointcut="execution(* com.model.Circle.get*())"/>
+	
+	<aop:after method="after" pointcut="execution(* com.model.Circle.set*(..))"/> -->
+	
+	<!-- for the methods inside the circle class that starts with the set__ and also returning any result  -->
+	
+	<!-- <aop:after-returning method="afterReturning"  returning="myReturnedObject" pointcut="execution(* com.model.Circle.set*(..))"/>
+
+	 -->
+	<!-- for the methods inside the circle class that starts with set__ __> after throwing -->
+	
+	<!-- <aop:after-throwing method="afterThrowing" pointcut="execution(* com.model.Circle.set*(..))"/> -->
+	
+	<!-- for the methods inside the circle class that throw exception , and starting with set,,,,and also catching the exception  -->
+	
+	<!-- <aop:after-throwing method="afterThrowingAndCatchingTheException" throwing="exception" pointcut="execution(* com.model.Circle.set*(..))"/>
+	 -->
+	<!-- for all the methods inside the circle class which starts with get -->
+	
+		<!-- <aop:pointcut id="allGetters" expression="execution(* com.model.Circle.get*())"/>
+		<aop:around pointcut-ref="allGetters" method="myArounAdviceMethod"/>
+	 -->
+	</aop:aspect>
+
+</aop:config>
+
+
+</beans>
